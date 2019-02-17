@@ -1,0 +1,6 @@
+<%= form_tag addresses_select_path, method: :post do %>
+
+    <%= hidden_field_tag "address_id", address_id%>
+    <%= submit_tag "Select" %>
+
+<% end %>

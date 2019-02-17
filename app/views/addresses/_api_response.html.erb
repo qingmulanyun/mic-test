@@ -1,0 +1,56 @@
+<div class="card mb-4" id="address_card">
+  <div class="card-block">
+    <h4> Addresses in API response</h4>
+    <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+    <% if flash[:error] %>
+        <div class="notice"><%= flash[:error] %></div>
+    <% end %>
+    <br />
+    <table class="table table-hover">
+      <thead>
+      <tr class="uppercase">
+        <th> Street Name </th>
+        <th> Street Type </th>
+        <th> Street Suffix </th>
+        <th> Street Number </th>
+        <th> State </th>
+        <th> Postcode </th>
+        <th> Suburb </th>
+        <th> Property Name </th>
+        <th> House Number </th>
+        <th> Lot </th>
+        <th> Floor </th>
+        <th> Unit </th>
+        <th> Po Box </th>
+        <th> Select </th>
+      </tr>
+      </thead>
+      <tbody>
+      <% addresses&.each do | id, address | %>
+          <tr>
+            <td> <%= address['street_name'] %></td>
+            <td> <%= formatted_street_type(address['street_type']) %></td>
+            <td> <%= address['street_suffix'] %></td>
+            <td> <%= address['street_number'] %></td>
+            <td> <%= address['state'] %></td>
+            <td> <%= address['postcode'] %></td>
+            <td> <%= address['suburb'] %></td>
+            <td> <%= address['property_name'] %></td>
+            <td> <%= address['house_number'] %></td>
+            <td> <%= address['lot'] %></td>
+            <td> <%= address['floor'] %></td>
+            <td> <%= address['unit'] %></td>
+            <td> <%= address['po_box'] %></td>
+            <td>
+              <%= render partial: 'select_form', locals: {address_id: id} %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

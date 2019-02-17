@@ -1,0 +1,10 @@
+<hr />
+<h4> Addresses in DB</h4>
+<% if flash[:new_address] %>
+    <h5><%= flash[:new_address] %></h5>
+<% end %>
+<div id="db_addresses_container">
+  <% Address.all&.each do | address | %>
+  <%=  "#{address.address_id} #{address.summary}" %> <br/>
+  <% end %>
+</div>

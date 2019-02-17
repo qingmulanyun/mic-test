@@ -1,0 +1,21 @@
+<%= form_tag addresses_path, method: :get do %>
+
+    <%= label_tag :postcode %>
+    <%= text_field_tag :postcode %>
+
+    <br />
+
+    <%= label_tag :street_name %>
+    <%= text_field_tag :street_name %>
+
+    <br />
+
+    <%= submit_tag "Search" %>
+
+<% end %>
+
+<%= render partial: 'index' if Address.all.present? %>
+
+<hr />
+
+<%= render partial: 'api_response', locals: {addresses: @addresses} if @addresses.present? %>
